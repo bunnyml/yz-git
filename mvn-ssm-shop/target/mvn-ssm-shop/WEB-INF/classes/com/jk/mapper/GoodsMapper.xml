@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.dao.GoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.pojo.Goods" >
+    <id column="goodsId" property="goodsid" jdbcType="INTEGER" />
+    <result column="addTime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="deleteFlag" property="deleteflag" jdbcType="INTEGER" />
+    <result column="examineId" property="examineid" jdbcType="INTEGER" />
+    <result column="goodsName" property="goodsname" jdbcType="VARCHAR" />
+    <result column="goodsPhoto" property="goodsphoto" jdbcType="VARCHAR" />
+    <result column="goodsPrice" property="goodsprice" jdbcType="DOUBLE" />
+    <result column="goodsTypeId" property="goodstypeid" jdbcType="INTEGER" />
+    <result column="productLookamount" property="productlookamount" jdbcType="INTEGER" />
+    <result column="productProfile" property="productprofile" jdbcType="VARCHAR" />
+    <result column="stock" property="stock" jdbcType="VARCHAR" />
+    <result column="whetherSelling" property="whetherselling" jdbcType="INTEGER" />
+    <result column="whetherTheShelves" property="whethertheshelves" jdbcType="INTEGER" />
+    <result column="goodsNumber" property="goodsnumber" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    goodsId, addTime, deleteFlag, examineId, goodsName, goodsPhoto, goodsPrice, goodsTypeId, 
+    productLookamount, productProfile, stock, whetherSelling, whetherTheShelves, goodsNumber
+  </sql>
+  
+  
+   <select id="findGoods" resultMap="BaseResultMap" parameterType="com.jk.pojo.Goods" >
+    select *
+    from goodsinformation
+  </select>
+  
+  
+  
+  
+  
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goodsinformation
+    where goodsId = #{goodsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goodsinformation
+    where goodsId = #{goodsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jk.pojo.Goods" >
+    insert into goodsinformation (goodsId, addTime, deleteFlag, 
+      examineId, goodsName, goodsPhoto, 
+      goodsPrice, goodsTypeId, productLookamount, 
+      productProfile, stock, whetherSelling, 
+      whetherTheShelves, goodsNumber)
+    values (#{goodsid,jdbcType=INTEGER}, #{addtime,jdbcType=TIMESTAMP}, #{deleteflag,jdbcType=INTEGER}, 
+      #{examineid,jdbcType=INTEGER}, #{goodsname,jdbcType=VARCHAR}, #{goodsphoto,jdbcType=VARCHAR}, 
+      #{goodsprice,jdbcType=DOUBLE}, #{goodstypeid,jdbcType=INTEGER}, #{productlookamount,jdbcType=INTEGER}, 
+      #{productprofile,jdbcType=VARCHAR}, #{stock,jdbcType=VARCHAR}, #{whetherselling,jdbcType=INTEGER}, 
+      #{whethertheshelves,jdbcType=INTEGER}, #{goodsnumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jk.pojo.Goods" >
+    insert into goodsinformation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsid != null" >
+        goodsId,
+      </if>
+      <if test="addtime != null" >
+        addTime,
+      </if>
+      <if test="deleteflag != null" >
+        deleteFlag,
+      </if>
+      <if test="examineid != null" >
+        examineId,
+      </if>
+      <if test="goodsname != null" >
+        goodsName,
+      </if>
+      <if test="goodsphoto != null" >
+        goodsPhoto,
+      </if>
+      <if test="goodsprice != null" >
+        goodsPrice,
+      </if>
+      <if test="goodstypeid != null" >
+        goodsTypeId,
+      </if>
+      <if test="productlookamount != null" >
+        productLookamount,
+      </if>
+      <if test="productprofile != null" >
+        productProfile,
+      </if>
+      <if test="stock != null" >
+        stock,
+      </if>
+      <if test="whetherselling != null" >
+        whetherSelling,
+      </if>
+      <if test="whethertheshelves != null" >
+        whetherTheShelves,
+      </if>
+      <if test="goodsnumber != null" >
+        goodsNumber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsid != null" >
+        #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteflag != null" >
+        #{deleteflag,jdbcType=INTEGER},
+      </if>
+      <if test="examineid != null" >
+        #{examineid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsname != null" >
+        #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsphoto != null" >
+        #{goodsphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsprice != null" >
+        #{goodsprice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodstypeid != null" >
+        #{goodstypeid,jdbcType=INTEGER},
+      </if>
+      <if test="productlookamount != null" >
+        #{productlookamount,jdbcType=INTEGER},
+      </if>
+      <if test="productprofile != null" >
+        #{productprofile,jdbcType=VARCHAR},
+      </if>
+      <if test="stock != null" >
+        #{stock,jdbcType=VARCHAR},
+      </if>
+      <if test="whetherselling != null" >
+        #{whetherselling,jdbcType=INTEGER},
+      </if>
+      <if test="whethertheshelves != null" >
+        #{whethertheshelves,jdbcType=INTEGER},
+      </if>
+      <if test="goodsnumber != null" >
+        #{goodsnumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jk.pojo.Goods" >
+    update goodsinformation
+    <set >
+      <if test="addtime != null" >
+        addTime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteflag != null" >
+        deleteFlag = #{deleteflag,jdbcType=INTEGER},
+      </if>
+      <if test="examineid != null" >
+        examineId = #{examineid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsname != null" >
+        goodsName = #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsphoto != null" >
+        goodsPhoto = #{goodsphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsprice != null" >
+        goodsPrice = #{goodsprice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodstypeid != null" >
+        goodsTypeId = #{goodstypeid,jdbcType=INTEGER},
+      </if>
+      <if test="productlookamount != null" >
+        productLookamount = #{productlookamount,jdbcType=INTEGER},
+      </if>
+      <if test="productprofile != null" >
+        productProfile = #{productprofile,jdbcType=VARCHAR},
+      </if>
+      <if test="stock != null" >
+        stock = #{stock,jdbcType=VARCHAR},
+      </if>
+      <if test="whetherselling != null" >
+        whetherSelling = #{whetherselling,jdbcType=INTEGER},
+      </if>
+      <if test="whethertheshelves != null" >
+        whetherTheShelves = #{whethertheshelves,jdbcType=INTEGER},
+      </if>
+      <if test="goodsnumber != null" >
+        goodsNumber = #{goodsnumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where goodsId = #{goodsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jk.pojo.Goods" >
+    update goodsinformation
+    set addTime = #{addtime,jdbcType=TIMESTAMP},
+      deleteFlag = #{deleteflag,jdbcType=INTEGER},
+      examineId = #{examineid,jdbcType=INTEGER},
+      goodsName = #{goodsname,jdbcType=VARCHAR},
+      goodsPhoto = #{goodsphoto,jdbcType=VARCHAR},
+      goodsPrice = #{goodsprice,jdbcType=DOUBLE},
+      goodsTypeId = #{goodstypeid,jdbcType=INTEGER},
+      productLookamount = #{productlookamount,jdbcType=INTEGER},
+      productProfile = #{productprofile,jdbcType=VARCHAR},
+      stock = #{stock,jdbcType=VARCHAR},
+      whetherSelling = #{whetherselling,jdbcType=INTEGER},
+      whetherTheShelves = #{whethertheshelves,jdbcType=INTEGER},
+      goodsNumber = #{goodsnumber,jdbcType=VARCHAR}
+    where goodsId = #{goodsid,jdbcType=INTEGER}
+  </update>
+</mapper>
